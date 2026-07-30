@@ -15,11 +15,11 @@ export default function App() {
           </div>
         </header>
         <div className="pl-[40px]">
-          <div className="center mt-[60px] w-fit gap-[20px]">
-            <p className="text-[55px]">New Product</p>
-            <div className="mt-[10px] text-[#003EA8] bg-[#DBE1FF] w-fit px-[10px] py-[7px] rounded-lg">BETA</div>
+          <div className="mt-[60px] w-fit gap-[20px]">
+            <p className="text-[55px]">New</p>
+            <p className="text-[55px] mt-[-15px]">Product</p>
           </div>
-          <p>จัดการตารางเรียนและ Event ต่างๆ ในห้องเรียนง่ายๆ ด้วยมือของคุณ</p>
+          <p className="w-[65%]">จัดการตารางเรียนและ Event ต่างๆ ในห้องเรียนง่ายๆ ด้วยมือของคุณ</p>
           <p>เริ่มการสร้างสรรค์ของคุณเลย!</p>
           <div className="w-fit center mt-[20px] mb-[60px] gap-[15px]">
             <div className="cursor-pointer bg-[#003EA8] text-white p-[10px] text-[12px] rounded-lg duration-[0.3s] hover:bg-white hover:text-[#003EA8] hover:border hover:border-solid hover:border-[#003EA8] active:bg-white active:text-[#003EA8] active:border active:border-solid active:border-[#003EA8]">
