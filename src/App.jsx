@@ -62,9 +62,9 @@ export default function App() {
           </div>
         </div>
         <div className="w-screen bg-linear-to-b from-[#00174B] via-[#0053DB] to-[#346EF6] p-[20px]">
-          <p className="text-white text-[40px] max-[690px]:text-center">เพราะพวกเราต้องการเป็น</p>
-          <p className="text-white text-[35px] max-[690px]:text-center">ส่วนหนึ่งในการพัฒนา</p>
-          <p className="text-[#B4C5FF] font-bold text-[30px] max-[690px]:text-center">"นวัตกรรม"</p>
+          <p className="text-white text-[40px] max-[690px]:text-center max-[470px]:text-[30px]">เพราะพวกเราต้องการเป็น</p>
+          <p className="text-white text-[35px] max-[690px]:text-center max-[470px]:text-[25px]">ส่วนหนึ่งในการพัฒนา</p>
+          <p className="text-[#B4C5FF] font-bold text-[30px] max-[690px]:text-center max-[470px]:text-[25px]">"นวัตกรรม"</p>
           <div className="mt-[20px] grid grid-cols-2 max-[690px]:grid-cols-1 max-[690px]:gap-[20px] gap-[30px]">
             <section className="w-[300px] p-[20px] glass bg-white/10 backdrop-blur-lg rounded-lg border border-solid border-slate-500 max-[690px]:mx-auto">
               <div className="center w-[55px] h-[55px] bg-white rounded-full mx-auto">
