@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router";
 
 export default function App() {
   const [count, setCount] = useState(0);
@@ -58,6 +59,120 @@ export default function App() {
               <path fill="#334155" d="m22.12 24.438l-3.36-7.847c-.33-.768-.6-2.08-.6-2.916s.513-1.52 1.14-1.52s1.14-.514 1.14-1.14s-.684-1.14-1.52-1.14h-6.84c-.836 0-1.52.512-1.52 1.14s.513 1.14 1.14 1.14s1.14.684 1.14 1.52s-.27 2.148-.6 2.917L8.88 24.44c-.33.768-.6 1.74-.6 2.157s.342 1.103.76 1.52s1.444.76 2.28.76h8.36c.835 0 1.86-.34 2.28-.76s.76-1.102.76-1.52s-.27-1.39-.6-2.157zM16.583 7.625a1.082 1.082 0 1 0 2.166 0a1.083 1.083 0 1 0-2.166.001zm-2.915.167a.5.5 0 1 0 0-1a.5.5 0 0 0 0 1m1.917-2.5a1.584 1.584 0 1 0-.002-3.164a1.584 1.584 0 0 0 .002 3.162z" />
             </svg>
             <p className="text-[14px] text-slate-600">BIOTECH LAB</p>
+          </div>
+        </div>
+        <div className="w-screen bg-linear-to-b from-[#00174B] via-[#0053DB] to-[#346EF6] p-[20px]">
+          <p className="text-white text-[40px] max-[690px]:text-center">เพราะพวกเราต้องการเป็น</p>
+          <p className="text-white text-[35px] max-[690px]:text-center">ส่วนหนึ่งในการพัฒนา</p>
+          <p className="text-[#B4C5FF] font-bold text-[30px] max-[690px]:text-center">"นวัตกรรม"</p>
+          <div className="mt-[20px] grid grid-cols-2 max-[690px]:grid-cols-1 max-[690px]:gap-[20px] gap-[30px]">
+            <section className="w-[300px] p-[20px] glass bg-white/10 backdrop-blur-lg rounded-lg border border-solid border-slate-500 max-[690px]:mx-auto">
+              <div className="center w-[55px] h-[55px] bg-white rounded-full mx-auto">
+                <svg xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" viewBox="0 0 16 16">
+                  <path d="M0 0h16v16H0z" fill="none" />
+                  <path fill="#9a9a9a" d="M11.5 8A1.5 1.5 0 0 1 13 9.5v.5c0 1.971-1.86 4-5 4s-5-2.029-5-4v-.5A1.5 1.5 0 0 1 4.5 8zM8 1.5A2.75 2.75 0 1 1 8 7a2.75 2.75 0 0 1 0-5.5" />
+                </svg>
+              </div>
+              <p className="text-white text-center mt-[10px] font-bold">ธีร์</p>
+              <p className="text-slate-300 text-[12px] text-center">Founder</p>
+              <hr className="mx-[30px] my-[10px] text-slate-400" />
+              <i className="text-slate-300 text-[14px] text-center">"เพราะผมเชื่อว่าความคิดสร้างสรรค์ เป็นแหล่งก่อเกิดนวัตกรรมใหม่ๆที่แปลกใหม่ของมนุษย์ ผสมผสานกับจินตนาการอย่างไม่มีที่สิ้นสุด"</i>
+              <div className="flex justify-between items-center mt-[10px]">
+                <p className="text-white text-[12px]">7-31-2026</p>
+                <div className="group duration-500 center px-[10px] py-[7px] gap-[7px] cursor-pointer relative overflow-hidden text-[12px] text-white">
+                  <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24">
+                      <path d="M0 0h24v24H0z" fill="none" />
+                      <defs>
+                        <path id="SVGmFUv3dVk" fill="none" stroke="#fff" d="M3 16c1.5.5 1.5 3.5 5 3l1-.2m6 2.2v-3c0-.86-.363-1.636-.943-2.183a.01.01 0 0 1 .005-.018C17.48 15.117 20 12.78 20 10.001c0-1.262-.52-2.433-1.406-3.399a.01.01 0 0 1-.002-.01c.632-1.537.048-3.52-.096-3.591c-.139-.07-1.957.288-3.45 1.445a.01.01 0 0 1-.009.002A10.3 10.3 0 0 0 12 4c-1.076 0-2.103.16-3.04.449a.01.01 0 0 1-.009-.002C7.458 3.29 5.64 2.931 5.5 3.001c-.144.072-.728 2.057-.095 3.593a.01.01 0 0 1-.002.01C4.518 7.57 4 8.74 4 10.002c0 2.779 2.52 5.116 5.938 5.798a.01.01 0 0 1 .005.018A3 3 0 0 0 9 18v3" />
+                      </defs>
+                      <use href="#SVGmFUv3dVk" stroke-linecap="round" stroke-width="2" />
+                      <use href="#SVGmFUv3dVk" stroke-linecap="round" stroke-width="2" />
+                    </svg>
+                  </div>
+                  <div clasName="text-white text-[12px]">View Profile</div>
+                  <a href="https://github.com/MyTxweProgrammit" target="_blank" rel="noopener noreferrer" className="absolute w-full h-full duration-500 group-hover:bg-white"></a>
+                  <div className="absolute translate-x-[100px] duration-500 group-hover:translate-x-[0px]">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24">
+                      <path d="M0 0h24v24H0z" fill="none" />
+                      <g fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                        <path stroke-dasharray="20" d="M3 12h17.5">
+                          <animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="20;0" />
+                        </path>
+                        <path stroke-dasharray="12" stroke-dashoffset="12" d="M21 12l-7 7M21 12l-7 -7">
+                          <animate fill="freeze" attributeName="stroke-dashoffset" begin="0.3s" dur="0.2s" to="0" />
+                        </path>
+                      </g>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section className="w-[300px] p-[20px] glass bg-white/10 backdrop-blur-lg rounded-lg border border-solid border-slate-500 max-[690px]:mx-auto">
+              <div className="center w-[55px] h-[55px] bg-white rounded-full mx-auto">
+                <svg xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" viewBox="0 0 16 16">
+                  <path d="M0 0h16v16H0z" fill="none" />
+                  <path fill="#9a9a9a" d="M11.5 8A1.5 1.5 0 0 1 13 9.5v.5c0 1.971-1.86 4-5 4s-5-2.029-5-4v-.5A1.5 1.5 0 0 1 4.5 8zM8 1.5A2.75 2.75 0 1 1 8 7a2.75 2.75 0 0 1 0-5.5" />
+                </svg>
+              </div>
+              <p className="text-white text-center mt-[10px] font-bold">ปราชญ์</p>
+              <p className="text-slate-300 text-[12px] text-center">Co-Founder</p>
+              <hr className="mx-[30px] my-[10px] text-slate-400" />
+              <i className="text-slate-300 text-[14px] text-center">"บนโลกใบนี้ยังมีอีกหลายสิ่งให้เราได้เรียนรู้จากมัน อยู่ที่ว่าตัวคุณจะมีความพยายามใฝ่หามันมากน้อยเพียงใด เพื่อประโยชน์ต่อตัวเอง"</i>
+              <div className="flex justify-between items-center mt-[10px]">
+                <p className="text-white text-[12px]">7-31-2026</p>
+                <div className="group duration-500 center px-[10px] py-[7px] gap-[7px] cursor-pointer relative overflow-hidden text-[12px] text-white">
+                  <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24">
+                      <path d="M0 0h24v24H0z" fill="none" />
+                      <defs>
+                        <path id="SVGmFUv3dVk" fill="none" stroke="#fff" d="M3 16c1.5.5 1.5 3.5 5 3l1-.2m6 2.2v-3c0-.86-.363-1.636-.943-2.183a.01.01 0 0 1 .005-.018C17.48 15.117 20 12.78 20 10.001c0-1.262-.52-2.433-1.406-3.399a.01.01 0 0 1-.002-.01c.632-1.537.048-3.52-.096-3.591c-.139-.07-1.957.288-3.45 1.445a.01.01 0 0 1-.009.002A10.3 10.3 0 0 0 12 4c-1.076 0-2.103.16-3.04.449a.01.01 0 0 1-.009-.002C7.458 3.29 5.64 2.931 5.5 3.001c-.144.072-.728 2.057-.095 3.593a.01.01 0 0 1-.002.01C4.518 7.57 4 8.74 4 10.002c0 2.779 2.52 5.116 5.938 5.798a.01.01 0 0 1 .005.018A3 3 0 0 0 9 18v3" />
+                      </defs>
+                      <use href="#SVGmFUv3dVk" stroke-linecap="round" stroke-width="2" />
+                      <use href="#SVGmFUv3dVk" stroke-linecap="round" stroke-width="2" />
+                    </svg>
+                  </div>
+                  <div clasName="text-white text-[12px]">View Profile</div>
+                  <a href="https://github.com/SirachayaKaew" target="_blank" rel="noopener noreferrer" className="absolute w-full h-full duration-500 group-hover:bg-white"></a>
+                  <div className="absolute translate-x-[100px] duration-500 group-hover:translate-x-[0px]">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24">
+                      <path d="M0 0h24v24H0z" fill="none" />
+                      <g fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                        <path stroke-dasharray="20" d="M3 12h17.5">
+                          <animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="20;0" />
+                        </path>
+                        <path stroke-dasharray="12" stroke-dashoffset="12" d="M21 12l-7 7M21 12l-7 -7">
+                          <animate fill="freeze" attributeName="stroke-dashoffset" begin="0.3s" dur="0.2s" to="0" />
+                        </path>
+                      </g>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+        <div className="bg-[#DBE1FF] py-[10px]">
+          <p className="text-center text-[24px] text-[#00174B]">ติดต่อสอบถามเพิ่มเติม / แก้ข้อสงสัย</p>
+          <div className="mx-auto w-fit mt-[10px]">
+            <section className="center w-fit gap-[10px]">
+              <div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24">
+                  <path d="M0 0h24v24H0z" fill="none" />
+                  <path fill="#00174b" d="m16.556 12.906l-.455.453s-1.083 1.076-4.038-1.862s-1.872-4.014-1.872-4.014l.286-.286c.707-.702.774-1.83.157-2.654L9.374 2.86C8.61 1.84 7.135 1.705 6.26 2.575l-1.57 1.56c-.433.432-.723.99-.688 1.61c.09 1.587.808 5 4.812 8.982c4.247 4.222 8.232 4.39 9.861 4.238c.516-.048.964-.31 1.325-.67l1.42-1.412c.96-.953.69-2.588-.538-3.255l-1.91-1.039c-.806-.437-1.787-.309-2.417.317" />
+                </svg>
+              </div>
+              <p className="text-[#00174B]">ธีร์ <span className="font-bold underline">065-954-5774</span></p>
+            </section>
+            <section className="center mt-[5px] gap-[10px]">
+              <div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24">
+                  <path d="M0 0h24v24H0z" fill="none" />
+                  <path fill="#00174b" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2m-.4 4.25l-7.07 4.42c-.32.2-.74.2-1.06 0L4.4 8.25a.85.85 0 1 1 .9-1.44L12 11l6.7-4.19a.85.85 0 1 1 .9 1.44" />
+                </svg>
+              </div>
+              <p className="text-[#00174B]">humanyoungtee@gmail.com</p>
+            </section>
           </div>
         </div>
       </div>
