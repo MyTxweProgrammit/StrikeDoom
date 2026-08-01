@@ -61,6 +61,62 @@ export default function App() {
             <p className="text-[14px] text-slate-600">BIOTECH LAB</p>
           </div>
         </div>
+        <div className="bg-black py-[20px]">
+          <p className="text-center text-white text-[20px]">
+            จัดการ Event ง่ายๆด้วย
+            <span className="bg-linear-to-r from-pink-400 to-violet-300 bg-clip-text text-transparent text-[23px]">{" "}StrikeDoom</span>
+          </p>
+          <p className="text-center text-white font-bold text-[35px]">เปลี่ยนความยุ่งยากให้</p>
+          <p className="text-center text-white font-bold text-[35px]">เป็นเรื่องง่ายทันที</p>
+          <section className="py-[10px] w-fit mx-auto">
+            <div className="center gap-[10px] w-fit">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48">
+                <path d="M0 0h48v48H0z" fill="none" />
+                <g fill="none" stroke="#8CA8FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="4">
+                  <path d="M42 20v19a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3h21" />
+                  <path d="m16 20l10 8L41 7" />
+                </g>
+              </svg>
+              <p className="text-slate-300">ประหยัดเวลา</p>
+            </div>
+            <div className="center gap-[10px] w-fit">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48">
+                  <path d="M0 0h48v48H0z" fill="none" />
+                  <g fill="none" stroke="#8CA8FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="4">
+                    <path d="M42 20v19a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3h21" />
+                    <path d="m16 20l10 8L41 7" />
+                  </g>
+                </svg>
+                <p className="text-slate-300">เพิ่มประสิทธิภาพในการจัดการ</p>
+            </div>
+            <div className="center gap-[10px] w-fit">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48">
+                  <path d="M0 0h48v48H0z" fill="none" />
+                  <g fill="none" stroke="#8CA8FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="4">
+                    <path d="M42 20v19a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3h21" />
+                    <path d="m16 20l10 8L41 7" />
+                  </g>
+                </svg>
+                <p className="text-slate-300">ใช้งานฟรีไม่มีค่าใช้จ่าย</p>
+            </div>
+            <div className="center gap-[10px] w-fit">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48">
+                  <path d="M0 0h48v48H0z" fill="none" />
+                  <g fill="none" stroke="#8CA8FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="4">
+                    <path d="M42 20v19a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3h21" />
+                    <path d="m16 20l10 8L41 7" />
+                  </g>
+                </svg>
+                <p className="text-slate-300">เหมาะกับการใช้งานในเรื่องเรียน</p>
+            </div>
+          </section>
+          <div className="bg-linear-to-r from-[#00174B] via-[#0053DB] to-[#618BFF] w-fit mx-auto px-[20px] py-[9px] rounded-[20px] my-[15px]">
+            <p className="text-white">ลงทะเบียนเลย</p>
+          </div>
+          <p className="text-slate-300 text-[12px] text-center">
+            Sponsored by <span className="text-white"><i>StrikerX</i></span>
+          </p>
+        </div>
         <div className="w-screen bg-linear-to-b from-[#00174B] via-[#0053DB] to-[#346EF6] p-[20px]">
           <p className="text-white text-[40px] max-[690px]:text-center max-[470px]:text-[30px]">เพราะพวกเราต้องการเป็น</p>
           <p className="text-white text-[35px] max-[690px]:text-center max-[470px]:text-[25px]">ส่วนหนึ่งในการพัฒนา</p>
@@ -162,7 +218,9 @@ export default function App() {
                   <path fill="#00174b" d="m16.556 12.906l-.455.453s-1.083 1.076-4.038-1.862s-1.872-4.014-1.872-4.014l.286-.286c.707-.702.774-1.83.157-2.654L9.374 2.86C8.61 1.84 7.135 1.705 6.26 2.575l-1.57 1.56c-.433.432-.723.99-.688 1.61c.09 1.587.808 5 4.812 8.982c4.247 4.222 8.232 4.39 9.861 4.238c.516-.048.964-.31 1.325-.67l1.42-1.412c.96-.953.69-2.588-.538-3.255l-1.91-1.039c-.806-.437-1.787-.309-2.417.317" />
                 </svg>
               </div>
-              <p className="text-[#00174B]">ธีร์ <span className="font-bold underline">065-954-5774</span></p>
+              <p className="text-[#00174B]">
+                ธีร์ <span className="font-bold underline">065-954-5774</span>
+              </p>
             </section>
             <section className="center mt-[5px] gap-[10px]">
               <div>
