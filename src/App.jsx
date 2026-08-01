@@ -41,7 +41,7 @@ export default function App() {
               opacity: 1,
               translateY: "0px",
               transition: { duration: 0.7 },
-            }} className="w-[65%] z-99">จัดการตารางเรียนและ Event ต่างๆ ในห้องเรียนง่ายๆ ด้วยมือของคุณ</motion.p>
+            }} className="w-[65%] z-99 max-[415px]:w-[70%] max-[385px]:w-[75%]">จัดการตารางเรียนและ Event ต่างๆ ในห้องเรียนง่ายๆ ด้วยมือของคุณ</motion.p>
           <motion.p
             initial={{ opacity: 0, translateY: "-15px" }}
             animate={{
