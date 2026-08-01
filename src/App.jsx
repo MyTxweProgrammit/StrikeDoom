@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router";
+import { motion } from "motion/react";
 
 export default function App() {
   const [count, setCount] = useState(0);
 
   return (
     <>
-      <title>StrikeDoom - A Platform That Wil Help You To Manage Classroom</title>
+      <title>StrikeDoom | A Platform That Wil Help You To Manage Classroom</title>
       <div className="google-sans">
         <header className="shadow-lg w-screen h-[60px] flex justify-around items-center">
           <p className="text-[#003EA8] font-bold text-[20px]">StrikeDoom</p>
@@ -17,11 +18,37 @@ export default function App() {
         </header>
         <div className="pl-[40px]">
           <div className="mt-[60px] w-fit gap-[20px]">
-            <p className="text-[55px]">New</p>
-            <p className="text-[55px] mt-[-15px]">Product</p>
+            <motion.p
+              initial={{ opacity: 0, translateY: "-15px" }}
+              animate={{
+                opacity: 1,
+                translateY: "0px",
+                transition: { duration: 0.7 },
+              }}
+              className="text-[55px]">New</motion.p>
+            <motion.p
+              initial={{ opacity: 0, translateY: "-15px" }}
+              animate={{
+                opacity: 1,
+                translateY: "0px",
+                transition: { duration: 0.7 },
+              }}
+              className="text-[55px] mt-[-15px]">Product</motion.p>
           </div>
-          <p className="w-[65%]">จัดการตารางเรียนและ Event ต่างๆ ในห้องเรียนง่ายๆ ด้วยมือของคุณ</p>
-          <p>เริ่มการสร้างสรรค์ของคุณเลย!</p>
+          <motion.p
+            initial={{ opacity: 0, translateY: "-15px" }}
+            animate={{
+              opacity: 1,
+              translateY: "0px",
+              transition: { duration: 0.7 },
+            }} className="w-[65%]">จัดการตารางเรียนและ Event ต่างๆ ในห้องเรียนง่ายๆ ด้วยมือของคุณ</motion.p>
+          <motion.p
+            initial={{ opacity: 0, translateY: "-15px" }}
+            animate={{
+              opacity: 1,
+              translateY: "0px",
+              transition: { duration: 0.7 },
+            }}>เริ่มการสร้างสรรค์ของคุณเลย!</motion.p>
           <div className="w-fit center mt-[20px] mb-[60px] gap-[15px]">
             <div className="cursor-pointer bg-[#003EA8] text-white p-[10px] text-[12px] rounded-lg duration-[0.3s] hover:bg-white hover:text-[#003EA8] hover:border hover:border-solid hover:border-[#003EA8] active:bg-white active:text-[#003EA8] active:border active:border-solid active:border-[#003EA8]">
               GET STARTED
@@ -80,49 +107,49 @@ export default function App() {
               <p className="text-slate-300">ประหยัดเวลา</p>
             </div>
             <div className="center gap-[10px] w-fit">
-                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48">
-                  <path d="M0 0h48v48H0z" fill="none" />
-                  <g fill="none" stroke="#8CA8FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="4">
-                    <path d="M42 20v19a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3h21" />
-                    <path d="m16 20l10 8L41 7" />
-                  </g>
-                </svg>
-                <p className="text-slate-300">เพิ่มประสิทธิภาพในการจัดการ</p>
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48">
+                <path d="M0 0h48v48H0z" fill="none" />
+                <g fill="none" stroke="#8CA8FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="4">
+                  <path d="M42 20v19a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3h21" />
+                  <path d="m16 20l10 8L41 7" />
+                </g>
+              </svg>
+              <p className="text-slate-300">เพิ่มประสิทธิภาพในการจัดการ</p>
             </div>
             <div className="center gap-[10px] w-fit">
-                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48">
-                  <path d="M0 0h48v48H0z" fill="none" />
-                  <g fill="none" stroke="#8CA8FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="4">
-                    <path d="M42 20v19a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3h21" />
-                    <path d="m16 20l10 8L41 7" />
-                  </g>
-                </svg>
-                <p className="text-slate-300">ใช้งานฟรีไม่มีค่าใช้จ่าย</p>
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48">
+                <path d="M0 0h48v48H0z" fill="none" />
+                <g fill="none" stroke="#8CA8FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="4">
+                  <path d="M42 20v19a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3h21" />
+                  <path d="m16 20l10 8L41 7" />
+                </g>
+              </svg>
+              <p className="text-slate-300">ใช้งานฟรีไม่มีค่าใช้จ่าย</p>
             </div>
             <div className="center gap-[10px] w-fit">
-                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48">
-                  <path d="M0 0h48v48H0z" fill="none" />
-                  <g fill="none" stroke="#8CA8FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="4">
-                    <path d="M42 20v19a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3h21" />
-                    <path d="m16 20l10 8L41 7" />
-                  </g>
-                </svg>
-                <p className="text-slate-300">เหมาะกับการใช้งานในเรื่องเรียน</p>
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48">
+                <path d="M0 0h48v48H0z" fill="none" />
+                <g fill="none" stroke="#8CA8FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="4">
+                  <path d="M42 20v19a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3h21" />
+                  <path d="m16 20l10 8L41 7" />
+                </g>
+              </svg>
+              <p className="text-slate-300">เหมาะกับการใช้งานในเรื่องเรียน</p>
             </div>
           </section>
-          <div className="bg-linear-to-r from-[#00174B] via-[#0053DB] to-[#618BFF] w-fit mx-auto px-[20px] py-[9px] rounded-[20px] my-[15px]">
+          <div className="bg-linear-to-r from-[#00174B] via-[#0053DB] to-[#618BFF] cursor-pointer duration-500 hover:scale-[1.1] active:scale-[1.1] w-fit mx-auto px-[25px] py-[9px] rounded-[20px] my-[15px]">
             <p className="text-white">ลงทะเบียนเลย</p>
           </div>
           <p className="text-slate-300 text-[12px] text-center">
             Sponsored by <span className="text-white"><i>StrikerX</i></span>
           </p>
         </div>
-        <div className="w-screen bg-linear-to-b from-[#00174B] via-[#0053DB] to-[#346EF6] p-[20px]">
+        <div className="w-full bg-linear-to-b from-[#00174B] via-[#0053DB] to-[#346EF6] p-[20px]">
           <p className="text-white text-[40px] max-[690px]:text-center max-[470px]:text-[30px]">เพราะพวกเราต้องการเป็น</p>
           <p className="text-white text-[35px] max-[690px]:text-center max-[470px]:text-[25px]">ส่วนหนึ่งในการพัฒนา</p>
           <p className="text-[#B4C5FF] font-bold text-[30px] max-[690px]:text-center max-[470px]:text-[25px]">"นวัตกรรม"</p>
           <div className="mt-[20px] grid grid-cols-2 max-[690px]:grid-cols-1 max-[690px]:gap-[20px] gap-[30px]">
-            <section className="w-[300px] p-[20px] glass bg-white/10 backdrop-blur-lg rounded-lg border border-solid border-slate-500 max-[690px]:mx-auto">
+            <section className="w-[300px] p-[20px] glass bg-white/10 backdrop-blur-lg rounded-lg border border-solid border-slate-300 max-[690px]:mx-auto">
               <div className="center w-[55px] h-[55px] bg-white rounded-full mx-auto">
                 <svg xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" viewBox="0 0 16 16">
                   <path d="M0 0h16v16H0z" fill="none" />
@@ -164,7 +191,7 @@ export default function App() {
                 </div>
               </div>
             </section>
-            <section className="w-[300px] p-[20px] glass bg-white/10 backdrop-blur-lg rounded-lg border border-solid border-slate-500 max-[690px]:mx-auto">
+            <section className="w-[300px] p-[20px] glass bg-white/10 backdrop-blur-lg rounded-lg border border-solid border-slate-300 max-[690px]:mx-auto">
               <div className="center w-[55px] h-[55px] bg-white rounded-full mx-auto">
                 <svg xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" viewBox="0 0 16 16">
                   <path d="M0 0h16v16H0z" fill="none" />
