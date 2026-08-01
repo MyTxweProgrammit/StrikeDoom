@@ -16,7 +16,7 @@ export default function App() {
             <div className="cursor-pointer text-white bg-[#003EA8] px-[13px] py-[7px] rounded-lg">Register</div>
           </div>
         </header>
-        <div className="pl-[40px]">
+        <div className="pl-[15%] relative max-[1250px]:overflow-hidden">
           <div className="mt-[60px] w-fit gap-[20px]">
             <motion.p
               initial={{ opacity: 0, translateY: "-15px" }}
@@ -25,7 +25,7 @@ export default function App() {
                 translateY: "0px",
                 transition: { duration: 0.7 },
               }}
-              className="text-[55px]">New</motion.p>
+              className="text-[55px] z-99">New</motion.p>
             <motion.p
               initial={{ opacity: 0, translateY: "-15px" }}
               animate={{
@@ -33,7 +33,7 @@ export default function App() {
                 translateY: "0px",
                 transition: { duration: 0.7 },
               }}
-              className="text-[55px] mt-[-15px]">Product</motion.p>
+              className="text-[55px] mt-[-15px] z-99">Product</motion.p>
           </div>
           <motion.p
             initial={{ opacity: 0, translateY: "-15px" }}
@@ -41,7 +41,7 @@ export default function App() {
               opacity: 1,
               translateY: "0px",
               transition: { duration: 0.7 },
-            }} className="w-[65%]">จัดการตารางเรียนและ Event ต่างๆ ในห้องเรียนง่ายๆ ด้วยมือของคุณ</motion.p>
+            }} className="w-[65%] z-99">จัดการตารางเรียนและ Event ต่างๆ ในห้องเรียนง่ายๆ ด้วยมือของคุณ</motion.p>
           <motion.p
             initial={{ opacity: 0, translateY: "-15px" }}
             animate={{
@@ -50,11 +50,41 @@ export default function App() {
               transition: { duration: 0.7 },
             }}>เริ่มการสร้างสรรค์ของคุณเลย!</motion.p>
           <div className="w-fit center mt-[20px] mb-[60px] gap-[15px]">
-            <div className="cursor-pointer bg-[#003EA8] text-white p-[10px] text-[12px] rounded-lg duration-[0.3s] hover:bg-white hover:text-[#003EA8] hover:border hover:border-solid hover:border-[#003EA8] active:bg-white active:text-[#003EA8] active:border active:border-solid active:border-[#003EA8]">
+            <div className="z-99 cursor-pointer bg-[#003EA8] text-white p-[10px] text-[12px] rounded-lg duration-[0.3s] hover:bg-white hover:text-[#003EA8] hover:border hover:border-solid hover:border-[#003EA8] active:bg-white active:text-[#003EA8] active:border active:border-solid active:border-[#003EA8]">
               GET STARTED
             </div>
-            <div className="cursor-pointer bg-white text-[#003EA8] border border-solid border-[#003EA8] p-[10px] text-[12px] rounded-lg duration-[0.3s] hover:bg-[#003EA8] hover:text-white active:bg-[#003EA8] active:text-white">
+            <div className="z-99 cursor-pointer bg-white text-[#003EA8] border border-solid border-[#003EA8] p-[10px] text-[12px] rounded-lg duration-[0.3s] hover:bg-[#003EA8] hover:text-white active:bg-[#003EA8] active:text-white">
               DOCUMENTATION
+            </div>
+          </div>
+          <div className="absolute z-10 max-[1250px]:rotate-z-10 max-[1250px]:rotate-x-45 max-[1250px]:scale-[1.7] max-[1250px]:opacity-[0.5] max-[1250px]:top-[170px] max-[960px]:scale-[1.5] max-[960px]:right-[0%] max-[800px]:scale-[1.4] max-[778px]:scale-[1.2] max-[680px]:scale-[1] max-[680px]:top-[60px] max-[590px]:top-[240px] border border-solid border-slate-300 rounded-xl shadow-xl w-[350px] h-[270px] right-[15%] top-0 px-[15px]">
+            <div className="flex items-center justify-between mt-[10px]">
+              <div className="center gap-[7px]">
+                <section className="w-[15px] h-[15px] rounded-full bg-red-600"></section>
+                <section className="w-[15px] h-[15px] rounded-full bg-yellow-600"></section>
+                <section className="w-[15px] h-[15px] rounded-full bg-green-600"></section>
+              </div>
+              <p className="text-black text-[14px]">Weekly View</p>
+            </div>
+            <div className="grid grid-cols-4 mt-[15px]">
+              <section className="px-[3px]">
+                <div className="w-full h-[120px] bg-[#bacce3] rounded-xl"></div>
+                <div className="w-full h-[70px] bg-[#9e9e9e] rounded-xl mt-[6px]"></div>
+              </section>
+              <section className="px-[3px]">
+                <div className="w-full h-[40px] bg-[#bacce3] rounded-xl"></div>
+                <div className="w-full h-[50px] bg-[#e0c9b6] rounded-xl mt-[6px]"></div>
+                <div className="w-full h-[90px] bg-[#bacce3] rounded-xl mt-[6px]"></div>
+              </section>
+              <section className="px-[3px]">
+                <div className="w-full h-[70px] bg-[#bacce3] rounded-xl"></div>
+                <div className="w-full h-[110px] bg-[#00439c] rounded-xl mt-[6px] relative">
+                  <p className="absolute text-white text-[10px] bottom-[5px] left-[8px]">TH-007</p>
+                </div>
+              </section>
+              <section className="px-[3px]">
+                <div className="w-full h-[130px] bg-[#c2c2c2] rounded-xl"></div>
+              </section>
             </div>
           </div>
         </div>
