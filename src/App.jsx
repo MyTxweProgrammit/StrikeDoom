@@ -61,7 +61,7 @@ export default function App() {
             <p className="text-[14px] text-slate-600">BIOTECH LAB</p>
           </div>
         </div>
-        <div className="bg-black py-[20px]">
+        <div className="bg-black py-[40px]">
           <p className="text-center text-white text-[20px]">
             จัดการ Event ง่ายๆด้วย
             <span className="bg-linear-to-r from-pink-400 to-violet-300 bg-clip-text text-transparent text-[23px]">{" "}StrikeDoom</span>
