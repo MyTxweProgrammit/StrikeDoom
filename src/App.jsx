@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router";
 import { motion } from "motion/react";
+import { useNavigate } from "react-router-dom"
 
 export default function App() {
   const [count, setCount] = useState(0);
+  const navigate = useNavigate();
 
   return (
     <>
@@ -13,7 +15,7 @@ export default function App() {
           <p className="text-[#003EA8] font-bold text-[20px]">StrikeDoom</p>
           <div className="flex items-center gap-[20px]">
             <div className="cursor-pointer">Login</div>
-            <div className="cursor-pointer text-white bg-[#003EA8] px-[13px] py-[7px] rounded-lg">Register</div>
+            <div onClick={() => navigate('/signup')} className="cursor-pointer text-white bg-[#003EA8] px-[13px] py-[7px] rounded-lg">Register</div>
           </div>
         </header>
         <div className="pl-[15%] relative max-[1250px]:overflow-hidden">
