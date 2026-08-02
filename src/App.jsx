@@ -118,7 +118,7 @@ export default function App() {
             <p className="text-[14px] text-slate-600">BIOTECH LAB</p>
           </div>
         </div>
-        <div className="bg-black py-[40px]">
+        <div className="bg-gradient-to-b from-black to-[#00174B] py-[40px]">
           <p className="text-center text-white text-[20px]">
             จัดการ Event ง่ายๆด้วย
             <span className="bg-linear-to-r from-pink-400 to-violet-300 bg-clip-text text-transparent text-[23px]">{" "}StrikeDoom</span>
@@ -185,9 +185,9 @@ export default function App() {
           </p>
         </div>
         <div className="w-full bg-linear-to-b from-[#00174B] via-[#0053DB] to-[#346EF6] p-[20px]">
-          <p className="text-white text-[40px] max-[690px]:text-center max-[470px]:text-[30px]">เพราะพวกเราต้องการเป็น</p>
-          <p className="text-white text-[35px] max-[690px]:text-center max-[470px]:text-[25px]">ส่วนหนึ่งในการพัฒนา</p>
-          <p className="text-[#B4C5FF] font-bold text-[30px] max-[690px]:text-center max-[470px]:text-[25px]">"นวัตกรรม"</p>
+          <p className="text-white text-[40px] max-[690px]:text-center max-[470px]:text-[30px] text-center">เพราะพวกเราต้องการเป็น</p>
+          <p className="text-white text-[35px] max-[690px]:text-center max-[470px]:text-[25px] text-center">ส่วนหนึ่งในการพัฒนา</p>
+          <p className="text-[#B4C5FF] font-bold text-[30px] max-[690px]:text-center max-[470px]:text-[25px] text-center">"นวัตกรรม"</p>
           <div className="mt-[20px] grid grid-cols-2 max-[690px]:grid-cols-1 max-[690px]:gap-[20px] gap-[30px]">
             <section className="w-[300px] p-[20px] glass bg-white/10 backdrop-blur-lg rounded-lg border border-solid border-slate-300 max-[690px]:mx-auto">
               <div className="center w-[55px] h-[55px] bg-white rounded-full mx-auto">
