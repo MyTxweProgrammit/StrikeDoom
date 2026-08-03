@@ -82,7 +82,7 @@ export default function Signup() {
                         <button type="submit" className="duration-500 hover:scale-[1.05] cursor-pointer w-full mt-[20px] py-[10px] rounded-xl text-white bg-linear-to-r from-[#00174B] via-[#0053DB] to-[#618BFF]">
                             สร้างบัญชี
                         </button>
-                        <p className="text-center mt-[20px]">มีบัญชีอยู่แล้วใช่ไหม? <a href="/login" className="text-blue-500 font-bold underline">เข้าสู่ระบบ</a></p>
+                        <p className="text-center mt-[20px]">มีบัญชีอยู่แล้วใช่ไหม? <a href="/signin" className="text-blue-500 font-bold underline">เข้าสู่ระบบ</a></p>
                     </form>
                 </div>
             </div>

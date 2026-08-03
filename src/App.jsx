@@ -14,7 +14,7 @@ export default function App() {
         <header className="shadow-lg w-screen h-[60px] flex justify-around items-center">
           <p className="text-[#003EA8] font-bold text-[20px]">StrikeDoom</p>
           <div className="flex items-center gap-[20px]">
-            <div className="cursor-pointer">Login</div>
+            <div onClick={() => navigate('/signin')} className="cursor-pointer">Login</div>
             <div onClick={() => navigate('/signup')} className="cursor-pointer text-white bg-[#003EA8] px-[13px] py-[7px] rounded-lg">Register</div>
           </div>
         </header>
