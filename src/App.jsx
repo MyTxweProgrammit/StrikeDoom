@@ -52,7 +52,7 @@ export default function App() {
               transition: { duration: 0.7 },
             }}>เริ่มการสร้างสรรค์ของคุณเลย!</motion.p>
           <div className="w-fit center mt-[20px] mb-[60px] gap-[15px]">
-            <div className="z-99 cursor-pointer bg-[#003EA8] text-white p-[10px] text-[12px] rounded-lg duration-[0.3s] hover:bg-white hover:text-[#003EA8] hover:border hover:border-solid hover:border-[#003EA8] active:bg-white active:text-[#003EA8] active:border active:border-solid active:border-[#003EA8]">
+            <div onClick={() => navigate('/signin')} className="z-99 cursor-pointer bg-[#003EA8] text-white p-[10px] text-[12px] rounded-lg duration-[0.3s] hover:bg-white hover:text-[#003EA8] hover:border hover:border-solid hover:border-[#003EA8] active:bg-white active:text-[#003EA8] active:border active:border-solid active:border-[#003EA8]">
               GET STARTED
             </div>
             <div className="z-99 cursor-pointer bg-white text-[#003EA8] border border-solid border-[#003EA8] p-[10px] text-[12px] rounded-lg duration-[0.3s] hover:bg-[#003EA8] hover:text-white active:bg-[#003EA8] active:text-white">
@@ -179,7 +179,7 @@ export default function App() {
               <p className="text-slate-300">เชื่อมต่อกับ Google Classroom</p>
             </div>
           </section>
-          <div className="bg-linear-to-r from-[#00174B] via-[#0053DB] to-[#618BFF] cursor-pointer duration-500 hover:scale-[1.1] active:scale-[1.1] w-fit mx-auto px-[25px] py-[9px] rounded-[20px] my-[15px]">
+          <div onClick={() => navigate('/signup')} className="bg-linear-to-r from-[#00174B] via-[#0053DB] to-[#618BFF] cursor-pointer duration-500 hover:scale-[1.1] active:scale-[1.1] w-fit mx-auto px-[25px] py-[9px] rounded-[20px] my-[15px]">
             <p className="text-white">ลงทะเบียนเลย</p>
           </div>
           <p className="text-slate-300 text-[12px] text-center">
@@ -277,7 +277,7 @@ export default function App() {
             </section>
           </div>
         </div>
-        <div className="w-full py-[30px] px-[20px]">
+        <div className="w-full bg-white py-[30px] px-[20px]">
           <p className="text-center text-blue-600 font-bold">Knowledge & Data Management</p>
           <p className="text-center text-[35px] font-bold text-black my-[10px] max-[514px]:text-[30px]">จัดการความรู้และข้อมูลอย่างมีประสิทธิภาพ</p>
           <p className="text-center mx-auto text-slate-600 w-[70%]">สร้างฐานข้อมูลตารางเรียนใหม่แบบฉบับคุณ พร้อมใส่ข้อมูลที่คุณต้องการ เช่น การนัดหมายสอบ การแลกเปลี่ยนคาบ การชดเชยคาบเรียน ฯลฯ</p>

@@ -9,10 +9,10 @@ export default function Signin() {
             </head>
             <div className="google-sans grid grid-cols-2 max-[830px]:grid-cols-1">
                 <div className="w-full h-screen bg-[#0053DB] center max-[830px]:h-fit max-[830px]:py-[70px]">
-                    <div className="w-[80%] grid grid-cols-1 gap-[50vh]">
+                    <div className="w-[80%] grid grid-cols-1 gap-[45vh]">
                         <div>
                             <p className="text-white font-bold">STRIKEDOOM</p>
-                            <p className="text-white text-[35px] mt-[20px]">Steamline Your Academic Enterprise.</p>
+                            <p className="text-white text-[60px] mt-[20px] max-[1185px]:text-[50px]">Steamline Your Academic Enterprise.</p>
                             <p className="text-slate-300 mt-[20px]">Access the central hub for institutional scheduling,</p>
                             <p className="text-slate-300">resource allocation, and faculty coordination.</p>
                         </div>

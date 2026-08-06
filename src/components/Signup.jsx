@@ -1,7 +1,26 @@
 import React, { useState } from "react";
+import { auth } from "./../firebase-config.js";
+import { createUserWithEmailAndPassword } from "firebase/auth"
 
 export default function Signup() {
     const [isStudent, setIsStudent] = useState(true);
+    const [username, setUsername] = useState("");
+    const [firstname, setFirstname] = useState("");
+    const [lastname, setLastname] = useState("");
+    const [email, setEmail] = useState("");
+    const [organization, setOrganization] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+
+    const handleSubmit = async () => {
+        if ((username != "") && (firstname != "") && (lastname != "") && (email != "") && (organization != "") && (password != "") && (confirmPassword != "")) {
+            if (confirmPassword == password) {
+                // do it later
+            } else { alert("Password are not same!") }
+        } else { 
+            alert("Error") 
+        }
+    }
 
     return (
         <>
@@ -40,46 +59,46 @@ export default function Signup() {
                         <div className="grid grid-cols-2 gap-[10px] bg-slate-200 rounded-[10px] p-[4px] mt-[20px]">
                             <div onClick={() => setIsStudent(true)} className={`${isStudent ? 'bg-slate-300' : ''} rounded-[10px] h-[40px] center cursor-pointer`}>
                                 <p className="text-slate-800">I am a Student</p>
-                            </div> 
+                            </div>
                             <div onClick={() => setIsStudent(false)} className={`${!isStudent ? 'bg-slate-300' : ''} rounded-[10px] h-[40px] center cursor-pointer`}>
                                 <p className="text-slate-800">I am a Teacher</p>
                             </div>
                         </div>
                         <div className="mt-[20px]">
-                                <p className="text-slate-700">ชื่อผู้ใช้งาน <span className="text-red-500 font-bold">*</span></p>
-                                <input type="text" placeholder="USERNAME" className="w-full outline-none bg-white border border-solid border-slate-300 py-[10px] px-[15px] rounded-[5px]"/>
+                            <p className="text-slate-700">ชื่อผู้ใช้งาน <span className="text-red-500 font-bold">*</span></p>
+                            <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="USERNAME" className="w-full outline-none bg-white border border-solid border-slate-300 py-[10px] px-[15px] rounded-[5px]" />
                         </div>
                         <div className="grid grid-cols-2 gap-[10px] mt-[20px]">
                             <section>
                                 <p className="text-slate-700">ชื่อ <span className="text-red-500 font-bold">*</span></p>
-                                <input type="text" placeholder="FIRST NAME" className="w-full outline-none bg-white border border-solid border-slate-300 py-[10px] px-[15px] rounded-[5px]"/>
+                                <input type="text" value={firstname} onChange={(e) => setFirstname(e.target.value)} placeholder="FIRST NAME" className="w-full outline-none bg-white border border-solid border-slate-300 py-[10px] px-[15px] rounded-[5px]" />
                             </section>
                             <section>
                                 <p className="text-slate-700">นามสกุล <span className="text-red-500 font-bold">*</span></p>
-                                <input type="text" placeholder="LAST NAME" className="w-full outline-none bg-white border border-solid border-slate-300 py-[10px] px-[15px] rounded-[5px]" />
+                                <input type="text" value={lastname} onChange={(e) => setLastname(e.target.value)} onCh placeholder="LAST NAME" className="w-full outline-none bg-white border border-solid border-slate-300 py-[10px] px-[15px] rounded-[5px]" />
                             </section>
                         </div>
                         <div className="grid grid-cols-2 gap-[10px] mt-[20px]">
                             <section>
                                 <p className="text-slate-700">อีเมล <span className="text-red-500 font-bold">*</span></p>
-                                <input type="email" placeholder="EMAIL" className="w-full outline-none bg-white border border-solid border-slate-300 py-[10px] px-[15px] rounded-[5px]"/>
+                                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="EMAIL" className="w-full outline-none bg-white border border-solid border-slate-300 py-[10px] px-[15px] rounded-[5px]" />
                             </section>
                             <section>
                                 <p className="text-slate-700">สถานศึกษา/องค์กร <span className="text-red-500 font-bold">*</span></p>
-                                <input type="text" placeholder="SCHOOL/ORGANIZATION" className="w-full outline-none bg-white border border-solid border-slate-300 py-[10px] px-[15px] rounded-[5px]" />
+                                <input type="text" value={organization} onChange={(e) => setOrganization(e.target.value)} placeholder="SCHOOL/ORGANIZATION" className="w-full outline-none bg-white border border-solid border-slate-300 py-[10px] px-[15px] rounded-[5px]" />
                             </section>
                         </div>
                         <div className="grid grid-cols-2 gap-[10px] mt-[20px]">
                             <section>
                                 <p className="text-slate-700">ตั้งรหัสผ่านใหม่ <span className="text-red-500 font-bold">*</span></p>
-                                <input type="password" placeholder="PASSWORD" className="w-full outline-none bg-white border border-solid border-slate-300 py-[10px] px-[15px] rounded-[5px]"/>
+                                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="PASSWORD" className="w-full outline-none bg-white border border-solid border-slate-300 py-[10px] px-[15px] rounded-[5px]" />
                             </section>
                             <section>
                                 <p className="text-slate-700">ยืนยันรหัสผ่าน <span className="text-red-500 font-bold">*</span></p>
-                                <input type="password" placeholder="CONFIRM PASSWORD" className="w-full outline-none bg-white border border-solid border-slate-300 py-[10px] px-[15px] rounded-[5px]" />
+                                <input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} placeholder="CONFIRM PASSWORD" className="w-full outline-none bg-white border border-solid border-slate-300 py-[10px] px-[15px] rounded-[5px]" />
                             </section>
                         </div>
-                        <button type="submit" className="duration-500 hover:scale-[1.05] cursor-pointer w-full mt-[20px] py-[10px] rounded-xl text-white bg-linear-to-r from-[#00174B] via-[#0053DB] to-[#618BFF]">
+                        <button type="submit" onClick={handleSubmit} className="duration-500 hover:scale-[1.05] cursor-pointer w-full mt-[20px] py-[10px] rounded-xl text-white bg-linear-to-r from-[#00174B] via-[#0053DB] to-[#618BFF]">
                             สร้างบัญชี
                         </button>
                         <p className="text-center mt-[20px]">มีบัญชีอยู่แล้วใช่ไหม? <a href="/signin" className="text-blue-500 font-bold underline">เข้าสู่ระบบ</a></p>
