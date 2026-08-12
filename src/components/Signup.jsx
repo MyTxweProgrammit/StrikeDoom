@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { auth } from "./../firebase-config.js";
-import { createUserWithEmailAndPassword } from "firebase/auth"
+import { createUserWithEmailAndPassword, sendEmailVerification, updateProfile, signOut } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 export default function Signup() {
+    const navigate = useNavigate();
     const [isStudent, setIsStudent] = useState(true);
     const [username, setUsername] = useState("");
     const [firstname, setFirstname] = useState("");
@@ -15,11 +17,16 @@ export default function Signup() {
     const handleSubmit = async () => {
         if ((username != "") && (firstname != "") && (lastname != "") && (email != "") && (organization != "") && (password != "") && (confirmPassword != "")) {
             if (confirmPassword == password) {
-                // do it later
-            } else { alert("Password are not same!") }
-        } else { 
-            alert("Error") 
-        }
+                try {
+                    const userCredential = await createUserWithEmailAndPassword(auth,email,password);
+                    await updateProfile(userCredential.user, {displayName: username});
+                    await sendEmailVerification(userCredential.user);
+                    await signOut(auth);
+                    alert("เราได้ส่งอีเมลยืนยันไปยังหาคุณแล้ว!")
+                    navigate("/signin")
+                } catch(error) { alert("Error : ",error.message); console.log("Error : ",error.message) }
+            } else { alert("Password are not same!"); }
+        } else { alert("Please Fill Some Information!"); }
     }
 
     return (
@@ -53,7 +60,10 @@ export default function Signup() {
                     </div>
                 </div>
                 <div className="w-full h-screen bg-slate-100 center">
-                    <form className="w-[80%]">
+                    <form className="w-[80%]" onSubmit={(e) => {
+                        e.preventDefault();
+                        handleSubmit();
+                    }}>
                         <p className="text-black text-[30px] font-bold">สร้างบัญชีของคุณ</p>
                         <p className="text-slate-600">กรอกข้อมูลของคุณเพื่อเริ่มต้นประสบการณ์ใหม่ๆ</p>
                         <div className="grid grid-cols-2 gap-[10px] bg-slate-200 rounded-[10px] p-[4px] mt-[20px]">
@@ -75,7 +85,7 @@ export default function Signup() {
                             </section>
                             <section>
                                 <p className="text-slate-700">นามสกุล <span className="text-red-500 font-bold">*</span></p>
-                                <input type="text" value={lastname} onChange={(e) => setLastname(e.target.value)} onCh placeholder="LAST NAME" className="w-full outline-none bg-white border border-solid border-slate-300 py-[10px] px-[15px] rounded-[5px]" />
+                                <input type="text" value={lastname} onChange={(e) => setLastname(e.target.value)} placeholder="LAST NAME" className="w-full outline-none bg-white border border-solid border-slate-300 py-[10px] px-[15px] rounded-[5px]" />
                             </section>
                         </div>
                         <div className="grid grid-cols-2 gap-[10px] mt-[20px]">
@@ -98,7 +108,7 @@ export default function Signup() {
                                 <input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} placeholder="CONFIRM PASSWORD" className="w-full outline-none bg-white border border-solid border-slate-300 py-[10px] px-[15px] rounded-[5px]" />
                             </section>
                         </div>
-                        <button type="submit" onClick={handleSubmit} className="duration-500 hover:scale-[1.05] cursor-pointer w-full mt-[20px] py-[10px] rounded-xl text-white bg-linear-to-r from-[#00174B] via-[#0053DB] to-[#618BFF]">
+                        <button type="submit" className="duration-500 hover:scale-[1.05] cursor-pointer w-full mt-[20px] py-[10px] rounded-xl text-white bg-linear-to-r from-[#00174B] via-[#0053DB] to-[#618BFF]">
                             สร้างบัญชี
                         </button>
                         <p className="text-center mt-[20px]">มีบัญชีอยู่แล้วใช่ไหม? <a href="/signin" className="text-blue-500 font-bold underline">เข้าสู่ระบบ</a></p>

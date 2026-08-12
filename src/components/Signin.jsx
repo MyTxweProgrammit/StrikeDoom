@@ -1,6 +1,45 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { auth } from "./../firebase-config.js";
+import { signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
-export default function Signin() {
+export default function Signin({ login }) {
+    const nav = useNavigate();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [rememberMe, setRememberMe] = useState(false);
+    const [authentication, setAuthentication] = useState(false);
+    const handleSubmit = async () => {
+        if ((email != "") && (password != "")) {
+            var sessionUser = {
+                token: 'bdd293e6-5b3e-4cce-8a54-7be422fdbb70',
+                remember: rememberMe,
+            }
+            setAuthentication(true);
+            try {
+                const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+                if (user.emailVerified === false) {
+                    alert("Please Verify Your Email First!");
+                    setAuthentication(false);
+                    await signOut(auth);
+                } else {
+                    alert("Login Successfully!");
+                    login(email, password);
+                    localStorage.setItem('user_strikedoom_token', JSON.stringify(sessionUser));
+                    nav("/user");
+                }
+            } catch(error) { 
+                alert("Error Can't Authenticated!");
+                console.log("Error Auth: ",error.message);
+            }
+        } else { alert("Please Fill Some Information!"); }
+    }
+    const SESSION_USER = localStorage.user_strikedoom_token ? JSON.parse(localStorage.user_strikedoom_token) : ''
+    if (SESSION_USER.remember) {
+        login(SESSION_USER.email, SESSION_USER.password);
+        nav("/user");
+    } else localStorage.removeItem('user_strikedoom_token');
 
     return (
         <>
@@ -30,22 +69,25 @@ export default function Signin() {
                     </div>
                 </div>
                 <div className="w-full h-screen bg-slate-100 center">
-                    <form className="w-[80%]">
+                    <form className="w-[80%]" onSubmit={(e) => {
+                        e.preventDefault();
+                        handleSubmit();
+                    }}>
                         <p className="text-black text-[30px] font-bold">เข้าสู่ระบบ</p>
                         <p className="text-slate-600">ยินดีต้อนรับกลับมานะ!</p>
                         <div className="mt-[20px]">
-                            <p className="text-slate-700">ชื่อผู้ใช้งานหรืออีเมล</p>
-                            <input type="text" placeholder="USERNAME/EMAIL" className="w-full outline-none bg-white border border-solid border-slate-300 py-[10px] px-[15px] rounded-[5px]" />
+                            <p className="text-slate-700">อีเมลของคุณ</p>
+                            <input type="email" placeholder="EMAIL" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full outline-none bg-white border border-solid border-slate-300 py-[10px] px-[15px] rounded-[5px]" />
                         </div>
                         <div className="mt-[20px]">
                             <section className="flex justify-between items-center">
                                 <p className="text-slate-700">รหัสผ่าน</p>
                                 <div className="text-blue-500 font-bold underline cursor-pointer">ลืมรหัสผ่าน?</div>
                             </section>
-                            <input type="password" placeholder="PASSWORD" className="w-full outline-none bg-white border border-solid border-slate-300 py-[10px] px-[15px] rounded-[5px]" />
+                            <input type="password" placeholder="PASSWORD" value={password} onChange={(e) => setPassword(e.target.value)} className="w-full outline-none bg-white border border-solid border-slate-300 py-[10px] px-[15px] rounded-[5px]" />
                         </div>
                         <div className="center w-fit gap-[10px] mt-[20px]">
-                            <input type="checkbox" className="w-[20px] h-[20px]" />
+                            <input type="checkbox" value={rememberMe} onChange={(e) => setRememberMe(e.target.checked)} className="w-[20px] h-[20px]" />
                             <p className="text-slate-700">Remember Me</p>
                         </div>
                         <button type="submit" className="duration-500 hover:scale-[1.05] cursor-pointer w-full mt-[20px] py-[10px] rounded-xl text-white bg-linear-to-r from-[#00174B] via-[#0053DB] to-[#618BFF]">
