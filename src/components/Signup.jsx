@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { auth } from "./../firebase-config.js";
+import { auth, database } from "./../firebase-config.js";
 import { createUserWithEmailAndPassword, sendEmailVerification, updateProfile, signOut } from "firebase/auth";
+import { ref, set } from "firebase/database";
 import { useNavigate } from "react-router-dom";
 
 export default function Signup() {
@@ -20,6 +21,14 @@ export default function Signup() {
                 try {
                     const userCredential = await createUserWithEmailAndPassword(auth,email,password);
                     await updateProfile(userCredential.user, {displayName: username});
+                    await set(ref(database, "users/" + userCredential.user.uid), {
+                        username: username,
+                        firstname: firstname,
+                        lastname: lastname,
+                        email: email,
+                        organization: organization,
+                        position: isStudent ? "Student" : "Teacher"
+                    })
                     await sendEmailVerification(userCredential.user);
                     await signOut(auth);
                     alert("เราได้ส่งอีเมลยืนยันไปยังหาคุณแล้ว!")
