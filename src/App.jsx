@@ -332,6 +332,124 @@ export default function App() {
               </svg>
             </div>
           </marquee>
+          <p className="text-center text-[35px] font-bold text-black mt-[80px] max-[514px]:text-[30px]">แพ็กเกจของเรา</p>
+          <section className="w-fit mx-auto grid grid-cols-2 max-[900px]:grid-cols-1 gap-[20px] mt-[20px]">
+            <div className="border border-solid border-slate-300 w-[400px] h-[400px] rounded-[20px] px-[25px] shadow-lg">
+              <p className="font-bold text-[30px] mt-[20px]">0 <span className="text-[16px]">฿/เดือน</span> <span className="font-normal text-[16px] text-slate-300 ml-[10px]">ฟรี</span></p>
+              <p className="text-slate-400 mt-[10px]">ต้อนรับผู้เริ่มต้นอย่างเป็นกันเอง ด้วย<span className="font-bold">ฟีเจอร์เบื้องต้น</span>เกี่ยวกับการจัดการภาระหน้าที่ต่างๆ</p>
+              <div onClick={() => navigate('/signin')} className="border border-solid border-slate-600 mt-[10px] py-[7px] rounded-[25px] text-slate-600 center cursor-pointer duration-500 hover:bg-black hover:text-white active:bg-black active:text-white">เริ่มต้นใช้งาน</div>
+              <hr className="border border-solid border-slate-300 mt-[15px]"/>
+              <div className="center w-fit gap-[10px] mt-[20px]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <path d="M0 0h24v24H0z" fill="none" />
+                  <path fill="none" stroke="#09a2ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m4 12l6 6L20 6" />
+                </svg>
+                <p className="text-slate-600">สิทธิ์การสร้างตารางเรียน</p>
+              </div>
+              <div className="center w-fit gap-[10px] mt-[10px]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <path d="M0 0h24v24H0z" fill="none" />
+                  <path fill="none" stroke="#09a2ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m4 12l6 6L20 6" />
+                </svg>
+                <p className="text-slate-600">สิทธิ์การส่งคำขอคาบเรียนหรือธุระอื่นๆ</p>
+              </div>
+              <div className="center w-fit gap-[10px] mt-[10px]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <path d="M0 0h24v24H0z" fill="none" />
+                  <path fill="none" stroke="#09a2ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m4 12l6 6L20 6" />
+                </svg>
+                <p className="text-slate-600">สิทธิ์การเข้าถึง StrikeFolio</p>
+              </div>
+              <div className="center w-fit gap-[10px] mt-[10px]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <path d="M0 0h24v24H0z" fill="none" />
+                  <path fill="none" stroke="#09a2ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m4 12l6 6L20 6" />
+                </svg>
+                <p className="text-slate-600">ครอบครองหน่วยความจำ 5000 KB</p>
+              </div>
+            </div>
+            <div className="border border-solid border-slate-300 w-[400px] h-[400px] rounded-[20px] px-[25px] shadow-lg">
+              <p className="font-bold text-[30px] mt-[20px]">125 <span className="text-[16px]">฿/เดือน</span> <span className="font-normal text-[16px] text-slate-300 ml-[10px]">Plus</span></p>
+              <p className="text-slate-400 mt-[10px]">ต้อนรับการพัฒนาครั้งใหม่ ด้วย<span className="font-bold">ฟีเจอร์ใหม่</span>ในระบบของเรามากขึ้นได้ที่นี่</p>
+              <div className="mt-[10px] bg-slate-200 py-[7px] rounded-[25px] text-slate-400 center cursor-not-allowed">เร็วๆนี้</div>
+              <hr className="border border-solid border-slate-300 mt-[15px]"/>
+              <div className="center w-fit gap-[10px] mt-[20px]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <path d="M0 0h24v24H0z" fill="none" />
+                  <path fill="none" stroke="#09a2ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m4 12l6 6L20 6" />
+                </svg>
+                <p className="text-slate-600">การเชื่อมต่อ Google Classroom</p>
+              </div>
+              <div className="center w-fit gap-[10px] mt-[10px]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <path d="M0 0h24v24H0z" fill="none" />
+                  <path fill="none" stroke="#09a2ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m4 12l6 6L20 6" />
+                </svg>
+                <p className="text-slate-600">ปลดล็อคการสร้างสูงสุด 7 โปรเจค</p>
+              </div>
+              <div className="center w-fit gap-[10px] mt-[10px]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <path d="M0 0h24v24H0z" fill="none" />
+                  <path fill="none" stroke="#09a2ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m4 12l6 6L20 6" />
+                </svg>
+                <p className="text-slate-600">ครอบครองหน่วยความจำ 1200 MB</p>
+              </div>
+            </div>
+            <div className="border border-solid border-slate-300 w-[400px] h-[400px] rounded-[20px] px-[25px] shadow-lg">
+              <p className="font-bold text-[30px] mt-[20px]">240 <span className="text-[16px]">฿/เดือน</span> <span className="font-normal text-[16px] text-slate-300 ml-[10px]">Special</span></p>
+              <p className="text-slate-400 mt-[10px]">แพ็กเกจพิเศษ สำหรับการเข้ามาร่วมสนับสนุนเรา</p>
+              <div className="mt-[10px] bg-slate-200 py-[7px] rounded-[25px] text-slate-400 center cursor-not-allowed">เร็วๆนี้</div>
+              <hr className="border border-solid border-slate-300 mt-[15px]"/>
+              <div className="center w-fit gap-[10px] mt-[20px]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <path d="M0 0h24v24H0z" fill="none" />
+                  <path fill="none" stroke="#09a2ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m4 12l6 6L20 6" />
+                </svg>
+                <p className="text-slate-600">สิทธิ์การร่วมเป็นนักพัฒนากับเรา</p>
+              </div>
+              <div className="center w-fit gap-[10px] mt-[10px]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <path d="M0 0h24v24H0z" fill="none" />
+                  <path fill="none" stroke="#09a2ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m4 12l6 6L20 6" />
+                </svg>
+                <p className="text-slate-600">ร่วม Event พิเศษกับเราในอนาคต</p>
+              </div>
+              <div className="center w-fit gap-[10px] mt-[10px]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <path d="M0 0h24v24H0z" fill="none" />
+                  <path fill="none" stroke="#09a2ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m4 12l6 6L20 6" />
+                </svg>
+                <p className="text-slate-600">สิทธิ์ในการเข้าร่วม Bootcamp, Hackathon</p>
+              </div>
+            </div>
+            <div className="border border-solid border-slate-300 w-[400px] h-[400px] rounded-[20px] px-[25px] shadow-lg">
+              <p className="font-bold text-[30px] mt-[20px]">400 <span className="text-[16px]">฿/เดือน</span> <span className="font-normal text-[16px] text-slate-300 ml-[10px]">Premium</span></p>
+              <p className="text-slate-400 mt-[10px]">ก้าวเข้าสู่ความก้าวหน้า และประสบการณ์ดีๆด้วยการจัดสรรใหม่ๆของเรา</p>
+              <div className="mt-[10px] bg-slate-200 py-[7px] rounded-[25px] text-slate-400 center cursor-not-allowed">เร็วๆนี้</div>
+              <hr className="border border-solid border-slate-300 mt-[15px]"/>
+              <div className="center w-fit gap-[10px] mt-[20px]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <path d="M0 0h24v24H0z" fill="none" />
+                  <path fill="none" stroke="#09a2ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m4 12l6 6L20 6" />
+                </svg>
+                <p className="text-slate-600">ใช้งานระบบ API</p>
+              </div>
+              <div className="center w-fit gap-[10px] mt-[10px]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <path d="M0 0h24v24H0z" fill="none" />
+                  <path fill="none" stroke="#09a2ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m4 12l6 6L20 6" />
+                </svg>
+                <p className="text-slate-600">เชื่อมต่อการทำงานทุกอย่างกับ Google App</p>
+              </div>
+              <div className="center w-fit gap-[10px] mt-[10px]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <path d="M0 0h24v24H0z" fill="none" />
+                  <path fill="none" stroke="#09a2ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m4 12l6 6L20 6" />
+                </svg>
+                <p className="text-slate-600">ครอบครองหน่วยความจำ 3 TB</p>
+              </div>
+            </div>
+          </section>
         </div>
         <div className="bg-[#DBE1FF] py-[10px]">
           <p className="text-center text-[24px] text-[#00174B]">ติดต่อสอบถามเพิ่มเติม / แก้ข้อสงสัย</p>
