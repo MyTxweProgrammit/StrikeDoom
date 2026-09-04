@@ -7,6 +7,8 @@ import Signup from './components/Signup.jsx';
 import Signin from './components/Signin.jsx';
 import Dashboard from './components/Dashboard.jsx'
 import RoleBasedRoute from './components/auth/RoleBasedRoute.jsx';
+import Viewer from './components/Viewer.jsx';
+import Project from './components/Project.jsx';
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from './firebase-config.js'
 
@@ -35,8 +37,10 @@ function Root() {
         <Route path="/" element={<App />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/signin" element={<Signin login={login} />} />
+        <Route path="/share" element={<Viewer />} />
         <Route element={<RoleBasedRoute requiredRole="user" isLoading={isLoading} /> }>
           <Route path="/user" element={<Dashboard logout={logout}/>} />
+          <Route path="/user/project/:projectId" element={<Project logout={logout} />} />
         </Route>
       </Routes>
     </BrowserRouter>

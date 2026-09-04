@@ -27,7 +27,9 @@ export default function Signup() {
                         lastname: lastname,
                         email: email,
                         organization: organization,
-                        position: isStudent ? "Student" : "Teacher"
+                        position: isStudent ? "Student" : "Teacher",
+                        projects: 0,
+                        package: "free",
                     })
                     await sendEmailVerification(userCredential.user);
                     await signOut(auth);

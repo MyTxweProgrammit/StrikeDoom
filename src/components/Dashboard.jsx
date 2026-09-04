@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { auth, database } from "./../firebase-config.js";
 import { onAuthStateChanged, deleteUser } from "firebase/auth";
-import { get, child, ref } from "firebase/database";
+import { get, child, ref, set, increment, push } from "firebase/database";
 import { useNavigate } from "react-router-dom";
 
 export default function Dashboard({ logout }) {
@@ -11,6 +11,9 @@ export default function Dashboard({ logout }) {
     const [Email, setEmail] = useState("");
     const [Organization, setOrganization] = useState("");
     const [animation, setAnimation] = useState(false);
+    const [projects, setProjects] = useState(null);
+    const [Package, setPackage] = useState("");
+    const [YourProject, setYourProject] = useState([]);
     onAuthStateChanged(auth, (user) => {
         if (user) {
             const displayname = user.displayName;
@@ -26,14 +29,33 @@ export default function Dashboard({ logout }) {
         get(child(ref(database), `users/${UID}`)).then((snapshot) => {
             if (snapshot.exists()) {
                 setOrganization(snapshot.val().organization);
-                console.log(snapshot.val())
+                setPackage(snapshot.val().package);
+                setProjects(snapshot.val().projects);
+                setYourProject(snapshot.val().project ? Object.keys(snapshot.val().project) : []);
             }
         }).catch((err) => alert(`Can't get translate data: ${err.message}`))
-    },[UID])
+    }, [UID])
     const handleLogout = () => {
         localStorage.removeItem('user_strikedoom_token');
         logout();
         nav("/signin");
+    }
+    const handleCreateProject = async () => {
+        const createIt = ref(database, `users/${UID}/projects`);
+        if (projects == 3 && Package == "free") alert("ไม่สามารถสร้างโปรเจคได้มากกว่า 3 ตัว โปรดอัพเกรดเป็น Plus");
+        else {
+            try {
+            const data = {
+                test: "test"
+            }
+            const newKey = push(ref(database, `users/${UID}/project`))
+            await set(newKey, data).then(() => {
+                alert("Add data Successfully!")
+            })
+            set(createIt, increment(1));
+            window.location.reload();
+        } catch(err) { alert("Can't add data") }
+        }
     }
     return (
         <>
@@ -74,13 +96,15 @@ export default function Dashboard({ logout }) {
                         <path fill="none" stroke="#4a4a4a" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h22M5 16h22M5 24h22" />
                     </svg>
                 </div>
-                <section className="absolute top-0 w-full h-screen pl-[20px] bg-white">
+                <section className="absolute top-0 w-full h-screen px-[20px] bg-white">
                     <p className="text-[#003EA8] mt-[100px] tracking-widest">USER DASHBOARD</p>
                     <p className="text-black font-bold text-[40px] mt-[10px]">Welcome, {displayName}</p>
                     <p className="text-slate-600 font-bold">{Organization}</p>
                     <p className="text-slate-600 mt-[20px] w-[70%]">Manage your lecture transitions and facility requests with architectural precision. Your schedule for <a className="text-blue-500 font-bold">Fall Semester 2024</a> is active.</p>
                     <p className="text-black font-bold text-[30px] mt-[100px]">New Project</p>
-                    <div className="w-[250px] h-[120px] bg-slate-200 border border-solid border-slate-300 rounded-[20px] mt-[20px] cursor-pointer duration-500 hover:bg-slate-300 center">
+                    <div
+                        onClick={handleCreateProject}
+                        className="w-[250px] h-[120px] bg-slate-200 border border-solid border-slate-300 rounded-[20px] mt-[20px] cursor-pointer duration-500 hover:bg-slate-300 center">
                         <div>
                             <section className="w-fit mx-auto">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24">
@@ -90,6 +114,15 @@ export default function Dashboard({ logout }) {
                             </section>
                             <p className="text-slate-600">สร้างตารางสอน</p>
                         </div>
+                    </div>
+                    <p className="text-black font-bold text-[30px] mt-[50px]">Your Project</p>
+                    <div className="mt-[20px]">
+                        {YourProject.map((projectId) => (
+                            <div key={projectId} onClick={() => window.location.href = `/user/project/${projectId}`} className="w-full h-[100px] bg-slate-200 border border-solid border-slate-300 rounded-[20px] mt-[20px] cursor-pointer duration-500 hover:bg-slate-300 center">
+                                <p className="text-slate-600">{projectId}</p>
+                                {console.log(projectId)}
+                            </div>
+                        ))}
                     </div>
                 </section>
             </div>
