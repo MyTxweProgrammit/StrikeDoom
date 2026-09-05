@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { auth, database } from "./../firebase-config.js";
-import { onAuthStateChanged, deleteUser } from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
 import { get, child, ref, set, increment, push } from "firebase/database";
 import { useNavigate } from "react-router-dom";
 
@@ -46,7 +46,9 @@ export default function Dashboard({ logout }) {
         else {
             try {
             const data = {
-                test: "test"
+                name: `StrikeDoom_Project-${projects+1}`,
+                shared: "...",
+                createdAt: new Date().toISOString(),
             }
             const newKey = push(ref(database, `users/${UID}/project`))
             await set(newKey, data).then(() => {

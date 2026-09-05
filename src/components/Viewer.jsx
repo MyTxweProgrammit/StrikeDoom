@@ -1,9 +1,21 @@
-import React from "react";
-import { useParams } from "react-router-dom";
+import React, { useState } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth, database } from "./../firebase-config.js";
+import { useSearchParams } from "react-router-dom";
 
 export default function Viewer() {
-    let params = useParams();
+    let [params] = useSearchParams();
+    const [UID, setUID] = useState("");
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            setUID(user.uid);
+        }
+    })
     return (
-        <p>Test Viewer : {params.projectId}</p>
+        <>
+            <p>Project ID : {params.get("p")}</p>
+            <p>Token : {params.get("t")}</p>
+            <p>UID : {UID}</p>
+        </>
     )
 }
