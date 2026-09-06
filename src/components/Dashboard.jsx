@@ -31,10 +31,15 @@ export default function Dashboard({ logout }) {
                 setOrganization(snapshot.val().organization);
                 setPackage(snapshot.val().package);
                 setProjects(snapshot.val().projects);
-                setYourProject(snapshot.val().project ? Object.keys(snapshot.val().project) : []);
+                setYourProject(snapshot.val().project ? Object.entries(snapshot.val().project).map(([key, value]) => ({
+                    projectId: key,
+                    name: value.name,
+                    createdAt: value.createdAt,
+                })) : []);
             }
         }).catch((err) => alert(`Can't get translate data: ${err.message}`))
     }, [UID])
+    console.log(YourProject)
     const handleLogout = () => {
         localStorage.removeItem('user_strikedoom_token');
         logout();
@@ -45,18 +50,18 @@ export default function Dashboard({ logout }) {
         if (projects == 3 && Package == "free") alert("ไม่สามารถสร้างโปรเจคได้มากกว่า 3 ตัว โปรดอัพเกรดเป็น Plus");
         else {
             try {
-            const data = {
-                name: `StrikeDoom_Project-${projects+1}`,
-                shared: "...",
-                createdAt: new Date().toISOString(),
-            }
-            const newKey = push(ref(database, `users/${UID}/project`))
-            await set(newKey, data).then(() => {
-                alert("Add data Successfully!")
-            })
-            set(createIt, increment(1));
-            window.location.reload();
-        } catch(err) { alert("Can't add data") }
+                const data = {
+                    name: `StrikeDoom_Project-${projects + 1}`,
+                    shared: "...",
+                    createdAt: new Date().toISOString(),
+                }
+                const newKey = push(ref(database, `users/${UID}/project`))
+                await set(newKey, data).then(() => {
+                    alert("Add data Successfully!")
+                })
+                set(createIt, increment(1));
+                window.location.reload();
+            } catch (err) { alert("Can't add data") }
         }
     }
     return (
@@ -103,6 +108,12 @@ export default function Dashboard({ logout }) {
                     <p className="text-black font-bold text-[40px] mt-[10px]">Welcome, {displayName}</p>
                     <p className="text-slate-600 font-bold">{Organization}</p>
                     <p className="text-slate-600 mt-[20px] w-[70%]">Manage your lecture transitions and facility requests with architectural precision. Your schedule for <a className="text-blue-500 font-bold">Fall Semester 2024</a> is active.</p>
+                    <div className="w-full mt-[20px] border border-solid border-yellow-500 bg-yellow-100 rounded-[15px] px-[10px] py-[13px] center gap-[10px]">
+                        <p className="text-yellow-700">
+                            คุณสามารถสร้างโปรเจคได้เพียง 3 รายการ โปรดซื้อเครดิตกับเราเพิ่มเติม {" "}
+                            <span className="font-bold underline cursor-pointer">ซื้อ Package</span>
+                        </p>
+                    </div>
                     <p className="text-black font-bold text-[30px] mt-[100px]">New Project</p>
                     <div
                         onClick={handleCreateProject}
@@ -119,10 +130,12 @@ export default function Dashboard({ logout }) {
                     </div>
                     <p className="text-black font-bold text-[30px] mt-[50px]">Your Project</p>
                     <div className="mt-[20px]">
-                        {YourProject.map((projectId) => (
-                            <div key={projectId} onClick={() => window.location.href = `/user/project/${projectId}`} className="w-full h-[100px] bg-slate-200 border border-solid border-slate-300 rounded-[20px] mt-[20px] cursor-pointer duration-500 hover:bg-slate-300 center">
-                                <p className="text-slate-600">{projectId}</p>
-                                {console.log(projectId)}
+                        {YourProject.map((project) => (
+                            <div key={project.projectId} onClick={() => window.location.href = `/user/project/${project.projectId}`} className="w-full h-[100px] bg-slate-200 border border-solid border-slate-300 rounded-[20px] mt-[20px] cursor-pointer duration-500 hover:bg-slate-300 center">
+                                <section>
+                                    <div className="text-slate-600 text-center">{project.name}</div>
+                                    <div className="text-slate-400 text-[10px] text-center">{project.createdAt}</div>
+                                </section>
                             </div>
                         ))}
                     </div>
