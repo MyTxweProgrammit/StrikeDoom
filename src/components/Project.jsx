@@ -11,7 +11,7 @@ export default function Project({ logout }) {
     const handleShareLink = async () => {
         const changedData = ref(database, `users/${UID}/project/${params.projectId}/shared`);
         const token = push(ref(database, `users/${UID}/project/${params.projectId}`));
-        const url = `${window.location.origin}/share?p=${params.projectId}&t=${token.key}`;
+        const url = `${window.location.origin}/share?u=${UID}&p=${params.projectId}&t=${token.key}`;
         try {
             set(changedData, token.key);
             navigator.clipboard.writeText(url).then(() => {
