@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { auth, database } from "./../firebase-config.js";
 import { onAuthStateChanged } from "firebase/auth";
-import { get, child, ref, set, increment, push } from "firebase/database";
+import { get, child, ref, set, increment, push, remove } from "firebase/database";
 import { useNavigate } from "react-router-dom";
 
 export default function Dashboard({ logout }) {
@@ -14,6 +14,9 @@ export default function Dashboard({ logout }) {
     const [projects, setProjects] = useState(null);
     const [Package, setPackage] = useState("");
     const [YourProject, setYourProject] = useState([]);
+    const [openPopUpToEdit, setOpenPopUpToEdit] = useState(false)
+    const [projectIdToEdit, setProjectIdToEdit] = useState("");
+    const [changeNameProject, setChangeNameProject] = useState("");
     onAuthStateChanged(auth, (user) => {
         if (user) {
             const displayname = user.displayName;
@@ -38,7 +41,7 @@ export default function Dashboard({ logout }) {
                 })) : []);
             }
         }).catch((err) => alert(`Can't get translate data: ${err.message}`))
-    }, [UID])
+    }, [UID, projects])
     console.log(YourProject)
     const handleLogout = () => {
         localStorage.removeItem('user_strikedoom_token');
@@ -51,7 +54,7 @@ export default function Dashboard({ logout }) {
         else {
             try {
                 const data = {
-                    name: `StrikeDoom_Project-${projects + 1}`,
+                    name: `StrikeDoom_Project`,
                     shared: "...",
                     createdAt: new Date().toISOString(),
                 }
@@ -64,12 +67,49 @@ export default function Dashboard({ logout }) {
             } catch (err) { alert("Can't add data") }
         }
     }
+    const editProject = (projectId, e) => {
+        e.stopPropagation();
+        setProjectIdToEdit(projectId);
+        setOpenPopUpToEdit(true);
+    }
+    const deleleProject = async (projectId, e) => {
+        e.stopPropagation();
+        try {
+            await remove(ref(database, `users/${UID}/project/${projectId}`));
+            set(ref(database, `users/${UID}/projects`), increment(-1));
+            alert("Delete Project Successfully!")
+            window.location.reload();
+        } catch(err) { alert("Can't delete project: "+err.message); }
+    }
+    const handleUpdateProjectName = () => {
+        try {
+            set(ref(database, `users/${UID}/project/${projectIdToEdit}/name`), changeNameProject);
+            alert("Update Project Name Successfully!");
+            window.location.reload();
+        } catch(err) {
+            alert("Can't update project name:"+err.message);
+        }
+    }
     return (
         <>
             <head>
                 <title>StrikeDoom | Dashboard</title>
             </head>
             <div className="relative google-sans text-blue-500 h-screen">
+                {openPopUpToEdit && (
+                    <div className="w-screen h-screen bg-black/50 fixed top-0 left-0 z-50 center">
+                        <div className="absolute left-[20px] top-[20px] cursor-pointer" onClick={() => setOpenPopUpToEdit(false)}>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24">
+                                <path d="M0 0h24v24H0z" fill="none" />
+                                <path fill="none" stroke="#fff" stroke-linecap="round" stroke-width="2" d="M20 20L4 4m16 0L4 20" />
+                            </svg>  
+                        </div>
+                        <div className="bg-white p-[10px] rounded-[20px] center">
+                            <input type="text" placeholder="เปลี่ยนชื่อโปรเจค" value={changeNameProject} onChange={(e) => setChangeNameProject(e.target.value)} className="outline-none bg-transparen pr-[10px] text-black" />
+                            <div className="cursor-pointer" onClick={handleUpdateProjectName}>ยืนยัน</div>
+                        </div>
+                    </div>
+                )}
                 <div className={`absolute z-99 overflow-hidden bg-slate-200 w-full duration-500 ${animation ? 'h-screen' : 'h-0'}`}>
                     <div onClick={() => setAnimation(false)} className="center cursor-pointer w-fit mt-[30px] ml-[30px]">
                         <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24">
@@ -131,7 +171,21 @@ export default function Dashboard({ logout }) {
                     <p className="text-black font-bold text-[30px] mt-[50px]">Your Project</p>
                     <div className="mt-[20px]">
                         {YourProject.map((project) => (
-                            <div key={project.projectId} onClick={() => window.location.href = `/user/project/${project.projectId}`} className="w-full h-[100px] bg-slate-200 border border-solid border-slate-300 rounded-[20px] mt-[20px] cursor-pointer duration-500 hover:bg-slate-300 center">
+                            <div key={project.projectId} onClick={() => window.location.href = `/user/project/${project.projectId}`} className="w-full h-[100px] bg-slate-200 border border-solid border-slate-300 rounded-[20px] mt-[20px] cursor-pointer duration-500 hover:bg-slate-300 center relative">
+                                <section className="z-10 w-fit center gap-[10px] absolute top-[10px] right-[25px]">
+                                    <button className="cursor-pointer" onClick={(e) => editProject(project.projectId, e)}>
+                                        <svg className="pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                                            <path d="M0 0h24v24H0z" fill="none" />
+                                            <path fill="#5b5b5b" d="M3.38 15.95c-.13.13-.22.29-.26.46l-1.08 4.34c-.09.34.01.7.26.95c.19.19.45.29.71.29c.08 0 .16 0 .24-.03l4.34-1.09c.18-.04.34-.13.46-.26L18.2 10.46l-4.67-4.67zM19.67 2.61c-.81-.81-2.14-.81-2.95 0l-1.78 1.78l4.67 4.67l1.78-1.78c.81-.81.81-2.13 0-2.95z" />
+                                        </svg>     
+                                    </button>
+                                    <button className="cursor-pointer" onClick={(e) => deleleProject(project.projectId, e)}>
+                                        <svg className="pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+                                            <path d="M0 0h20v20H0z" fill="none" />
+                                            <path fill="#5B5B5B" d="M8.5 4h3a1.5 1.5 0 0 0-3 0m-1 0a2.5 2.5 0 0 1 5 0h5a.5.5 0 0 1 0 1h-1.054l-1.194 10.344A3 3 0 0 1 12.272 18H7.728a3 3 0 0 1-2.98-2.656L3.554 5H2.5a.5.5 0 0 1 0-1zM9 8a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0zm2.5-.5a.5.5 0 0 0-.5.5v6a.5.5 0 0 0 1 0V8a.5.5 0 0 0-.5-.5" />
+                                        </svg>
+                                    </button>
+                                </section>
                                 <section>
                                     <div className="text-slate-600 text-center">{project.name}</div>
                                     <div className="text-slate-400 text-[10px] text-center">{project.createdAt}</div>
