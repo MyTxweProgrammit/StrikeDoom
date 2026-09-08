@@ -110,7 +110,7 @@ export default function Dashboard({ logout }) {
                         </div>
                     </div>
                 )}
-                <div className={`absolute z-99 overflow-hidden bg-slate-200 w-full duration-500 ${animation ? 'h-screen' : 'h-0'}`}>
+                <div className={`fixed top-0 z-99 overflow-hidden bg-slate-200 w-full duration-500 ${animation ? 'h-screen' : 'h-0'}`}>
                     <div onClick={() => setAnimation(false)} className="center cursor-pointer w-fit mt-[30px] ml-[30px]">
                         <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24">
                             <path d="M0 0h24v24H0z" fill="none" />
