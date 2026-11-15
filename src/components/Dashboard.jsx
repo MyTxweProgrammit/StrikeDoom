@@ -79,15 +79,15 @@ export default function Dashboard({ logout }) {
             set(ref(database, `users/${UID}/projects`), increment(-1));
             alert("Delete Project Successfully!")
             window.location.reload();
-        } catch(err) { alert("Can't delete project: "+err.message); }
+        } catch (err) { alert("Can't delete project: " + err.message); }
     }
     const handleUpdateProjectName = () => {
         try {
             set(ref(database, `users/${UID}/project/${projectIdToEdit}/name`), changeNameProject);
             alert("Update Project Name Successfully!");
             window.location.reload();
-        } catch(err) {
-            alert("Can't update project name:"+err.message);
+        } catch (err) {
+            alert("Can't update project name:" + err.message);
         }
     }
     return (
@@ -102,7 +102,7 @@ export default function Dashboard({ logout }) {
                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24">
                                 <path d="M0 0h24v24H0z" fill="none" />
                                 <path fill="none" stroke="#fff" stroke-linecap="round" stroke-width="2" d="M20 20L4 4m16 0L4 20" />
-                            </svg>  
+                            </svg>
                         </div>
                         <div className="bg-white p-[10px] rounded-[20px] center">
                             <input type="text" placeholder="เปลี่ยนชื่อโปรเจค" value={changeNameProject} onChange={(e) => setChangeNameProject(e.target.value)} className="outline-none bg-transparen pr-[10px] text-black" />
@@ -154,6 +154,21 @@ export default function Dashboard({ logout }) {
                             <span className="font-bold underline cursor-pointer">ซื้อ Package</span>
                         </p>
                     </div>
+                    <div onClick={() => window.location.href = '/user/toeic'} className="w-full mt-[20px] border border-solid border-slate-300 bg-slate-100 rounded-[15px] px-[20px] py-[13px] duration-500 hover:scale-[1.02] active:scale-[1.02] cursor-not-allowed flex justify-between">
+                        <section>
+                            <p className="text-[20px] text-slate-700 font-bold text-[25px]">ติว TOEIC</p>
+                            <p className="text-blue-900">เริ่มฝึกฝนทักษะภาษาอังกฤษของคุณ กับ AI ของเราได้เลย</p>
+                        </section>
+                        <section className="flex flex-col items-center justify-center gap-[10px]">
+                            <div className="w-[30px] h-[30px] rounded-full center bg-slate-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+                                    <path d="M0 0h24v24H0z" fill="none" />
+                                    <path fill="#888" d="M6 22h12c1.1 0 2-.9 2-2v-9c0-1.1-.9-2-2-2h-1V7c0-2.76-2.24-5-5-5S7 4.24 7 7v2H6c-1.1 0-2 .9-2 2v9c0 1.1.9 2 2 2m7-4.28V20h-2v-2.28A2 2 0 0 1 10 16c0-1.1.9-2 2-2s2 .9 2 2a2 2 0 0 1-1 1.72M9 7c0-1.65 1.35-3 3-3s3 1.35 3 3v2H9z" />
+                                </svg>
+                            </div>
+                            <p className="text-slate-400 text-[12px]">เปิดใช้งานได้เร็วๆนี้</p>
+                        </section>
+                    </div>
                     <p className="text-black font-bold text-[30px] mt-[100px]">New Project</p>
                     <div
                         onClick={handleCreateProject}
@@ -177,7 +192,7 @@ export default function Dashboard({ logout }) {
                                         <svg className="pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
                                             <path d="M0 0h24v24H0z" fill="none" />
                                             <path fill="#5b5b5b" d="M3.38 15.95c-.13.13-.22.29-.26.46l-1.08 4.34c-.09.34.01.7.26.95c.19.19.45.29.71.29c.08 0 .16 0 .24-.03l4.34-1.09c.18-.04.34-.13.46-.26L18.2 10.46l-4.67-4.67zM19.67 2.61c-.81-.81-2.14-.81-2.95 0l-1.78 1.78l4.67 4.67l1.78-1.78c.81-.81.81-2.13 0-2.95z" />
-                                        </svg>     
+                                        </svg>
                                     </button>
                                     <button className="cursor-pointer" onClick={(e) => deleleProject(project.projectId, e)}>
                                         <svg className="pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
