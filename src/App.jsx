@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router";
 import { motion } from "motion/react";
 import { useNavigate } from "react-router-dom"
+import Snowfall from "react-snowfall";
 
 export default function App() {
   const [count, setCount] = useState(0);
@@ -11,6 +12,16 @@ export default function App() {
     <>
       <title>StrikeDoom | A Platform That Wil Help You To Manage Classroom</title>
       <div className="google-sans">
+        <Snowfall 
+          color="#7bb4ed" 
+          style={{
+            position: "fixed",
+            width: "100vw",
+            height: "100vh",
+            zIndex: 9999,
+            pointerEvents: "none"
+          }}
+        />
         <header className="shadow-lg w-screen h-[60px] flex justify-around items-center">
           <p className="text-[#003EA8] font-bold text-[20px]">StrikeDoom</p>
           <div className="flex items-center gap-[20px]">
