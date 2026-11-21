@@ -42,7 +42,6 @@ export default function Dashboard({ logout }) {
             }
         }).catch((err) => alert(`Can't get translate data: ${err.message}`))
     }, [UID, projects])
-    console.log(YourProject)
     const handleLogout = () => {
         localStorage.removeItem('user_strikedoom_token');
         logout();

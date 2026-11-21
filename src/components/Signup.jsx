@@ -30,6 +30,7 @@ export default function Signup() {
                         position: isStudent ? "Student" : "Teacher",
                         projects: 0,
                         package: "free",
+                        creditchat: 100
                     })
                     await sendEmailVerification(userCredential.user);
                     await signOut(auth);

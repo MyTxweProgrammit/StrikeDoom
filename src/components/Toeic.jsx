@@ -1,51 +1,71 @@
 import react, { useState, useEffect } from 'react'
+import { auth, database } from "./../firebase-config.js";
+import { onAuthStateChanged } from "firebase/auth";
+import { child, ref, set, increment, onValue } from "firebase/database";
+import { Doomsbot } from './ai/Doomsbot';
 
 export default function Toeic({ logout }) {
     const [loading, setLoading] = useState(false);
-    const [loading_double, setLoadingDouble] = useState(false);
-    const [chatResponse, setChatResponse] = useState('');
-    const handleCreateChat = async () => {
-        setLoadingDouble(true);
-        try {
-            const response = await puter.ai.chat("What are the benefits of exercise?", { model: "gpt-5.4-nano" })
-            setChatResponse(response.message?.content);
-        } catch (error) {
-            console.error('Error:', error);
-        } finally {
-            setLoadingDouble(false);
+    const [displayName, setDisplayName] = useState('');
+    const [UID, setUID] = useState('');
+    const [creditChat, setCreditChat] = useState('');
+    const [response, setResponse] = useState('');
+    const [waitButton, setWaitButton] = useState(false);
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            const displayname = user.displayName;
+            const uid = user.uid;
+            setDisplayName(displayname);
+            setUID(uid);
         }
+    });
+    useEffect(() => {
+        if (!UID) return;
+        const creditRef = ref(database, `users/${UID}/creditchat`);
+        const unsubscribe = onValue(creditRef, (snapshot) => {
+            if (snapshot.exists()) {
+                setCreditChat(snapshot.val());
+            }
+        }, (err) => alert(`Can't get translate data: ${err.message}`));
+
+        return () => unsubscribe();
+    }, [UID]);
+    const handleCreateChat = async () => {
+        if (confirm("Use 5 credits to create, Want to continue?")) {
+            if (creditChat == 0 || creditChat < 0) {
+                alert("Your daily credit was out! Buy more.")
+            }
+            else {
+                try {
+                    alert("Use 5 credit to create!");
+                    set(ref(database, `users/${UID}/creditchat`), increment(-5));
+                    setWaitButton(true);
+                    const text = await Doomsbot("Give me a toeic exam in reading parts. Make it only one with four or five choices answer. Make It long paragraph.");
+                    setResponse(text);
+                } catch (err) { console.error("Failed to create an exam: ", err) }
+                finally { setWaitButton(false) }
+            }
+        }
+        else { alert("Cancellaion was accepted!") }
     }
-    const handlePlaySpeech = () => {
-        alert("เสียงยังไม่สามารถใช้ได้ตอนนี้ \n The Soundtrack are unavaliable.")
-        // setLoading(true);
-        // puter.ai.txt2speech("[sarcastically] I Auan.", {
-        //     provider: "elevenlabs",
-        //     voice: "NOpBlnGInO9m6vDvFkFC",
-        //     model: "eleven_v4"
-        // })
-        // .then(audio => {
-        //     audio.play();
-        // })
-        // .catch(error => {
-        //     console.error('Error:', error);
-        // })
-        // .finally(() => {
-        //     setLoading(false);
-        // });
-    };
     return (
         <div className="google-sans px-[20px]">
             <p className='text-[40px] mt-[30px] w-[50%] font-bold'>รับประสบการณ์ใหม่ๆ ด้วยตัวคุณเอง</p>
             <p className='text-[20px] text-slate-400  w-[50%]'>ฝึกฝนทักษะภาษาอังกฤษเลย เรามี AI ผู้ช่วยในการอำนวยความสะดวกให้คุณทุกช่วงเวลา</p>
+            <div className='bg-slate-200 w-fit border-2 border-solid border-slate-300 py-[7px] px-[12px] text-slate-800 mt-[10px] rounded-lg'>
+                <p className="font-bold text-[18px]">{displayName}</p>
+                <p className='text-[12px] text-slate-500'>Credit Usage: {creditChat}</p>
+                <progress className="progress progress-info w-56" value={creditChat} max="100"></progress>
+            </div>
             <section className='flex w-fit gap-[15px] mt-[20px]'>
-                <button onClick={handlePlaySpeech} className='bg-linear-to-r from-cyan-500 to-blue-500 text-white px-[12px] py-[10px] rounded-lg shadow-xl cursor-pointer duration-500 hover:scale-[1.04] active:scale-[1.04]'>
+                <button onClick={() => alert("Sound can't use for this moment")} className='bg-linear-to-r from-cyan-500 to-blue-500 text-white px-[12px] py-[10px] rounded-lg shadow-xl cursor-pointer duration-500 hover:scale-[1.04] active:scale-[1.04]'>
                     {loading ? "กำลังเปิดเสียง..." : "ฟังเสียงพูด"}
                 </button>
-                <button onClick={handleCreateChat} className='bg-linear-65 from-purple-500 to-pink-500 text-white px-[12px] py-[10px] rounded-lg shadow-xl cursor-pointer duration-500 hover:scale-[1.04] active:scale-[1.04]' disabled={loading_double}>
-                    {loading_double ? "กำลังสร้างโจทย์..." : "สร้างโจทย์"}
+                <button onClick={handleCreateChat} className='bg-linear-65 from-purple-500 to-pink-500 text-white px-[12px] py-[10px] rounded-lg shadow-xl cursor-pointer duration-500 hover:scale-[1.04] active:scale-[1.04]' disabled={waitButton}>
+                    { waitButton ? "กำลังสร้าง..." : "สร้างโจทย์" }
                 </button>
             </section>
-            <p className='text-black mt-[20px]'>{chatResponse}</p>
+            <p>{response}</p>
         </div>
     )
 }
