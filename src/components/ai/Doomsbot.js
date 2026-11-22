@@ -15,7 +15,10 @@ export async function Doomsbot(prompt) {
         Format: Response as a Markdown Language.
                 If It has a paragraph, email, letter or anything, You must to start it with 'Long_Text:' word 
                 Start a question with 'Question:' word.
-                Start a choice with 'A)', 'B)', 'C)' or 'D)'. 
+                Start a choice with 'A)', 'B)', 'C)' or 'D)'.
+                Start a correct choice with 'Correct:'.
+                If It has a paragraph Start a type with 'Type:' such as 'Type: Memo', 'Type: Email', 'Type: Schedule' etc.
+                If a paragraphs were mixed add '&' between two or more type such as 'Type: Memo & Email & ...' etc.  
                 Do not response to me with your any word such as 'Here is your...' or etc.
       `,
       temperature: 0.7, 
