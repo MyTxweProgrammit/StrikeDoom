@@ -46,11 +46,11 @@ export default function Toeic({ logout }) {
                 finally { setWaitButton(false) }
             }
         }
-        else { alert("Cancellaion was accepted!") }
+        else { alert("Cancellation was accepted!") }
     }
     return (
-        <div className="google-sans px-[20px]">
-            <p className='text-[40px] mt-[30px] w-[50%] font-bold'>รับประสบการณ์ใหม่ๆ ด้วยตัวคุณเอง</p>
+        <div className="google-sans px-[20px] bg-white py-[30px]">
+            <p className='text-[40px] text-black w-[50%] font-bold'>รับประสบการณ์ใหม่ๆ ด้วยตัวคุณเอง</p>
             <p className='text-[20px] text-slate-400  w-[50%]'>ฝึกฝนทักษะภาษาอังกฤษเลย เรามี AI ผู้ช่วยในการอำนวยความสะดวกให้คุณทุกช่วงเวลา</p>
             <div className='bg-slate-200 w-fit border-2 border-solid border-slate-300 py-[7px] px-[12px] text-slate-800 mt-[10px] rounded-lg'>
                 <p className="font-bold text-[18px]">{displayName}</p>
@@ -65,7 +65,14 @@ export default function Toeic({ logout }) {
                     { waitButton ? "กำลังสร้าง..." : "สร้างโจทย์" }
                 </button>
             </section>
-            <p>{response}</p>
+            <div className="border-2 border-solid border-blue-200 bg-blue-100 p-[10px] mt-[20px] rounded-xl shadow-xl">
+                <p className="text-[12px] text-black">{response.match(/(?<=Long_Text:\s*)[\s\S]*?(?=\s*Question:)/)}</p>
+                <p className="text-black my-[10px]">170.{response.match(/(?<=Question:\s*)([\s\S]*?)(?=\s*A\))/)}</p>
+                <div className="mt-[10px] text-[14px] bg-purple-200 text-purple-700 border-2 border-solid border-purple-300 p-[10px] rounded-xl duration-500 cursor-pointer hover:bg-purple-300 hover:text-purple-900 active:bg-purple-300 hover:text-purple-900">{response.match(/A\)\s*([\s\S]*?)(?=\s*B\)|$)/)}</div>
+                <div className="mt-[10px] text-[14px] bg-purple-200 text-purple-700 border-2 border-solid border-purple-300 p-[10px] rounded-xl duration-500 cursor-pointer hover:bg-purple-300 hover:text-purple-900 active:bg-purple-300 hover:text-purple-900">{response.match(/B\)\s*([\s\S]*?)(?=\s*C\)|$)/)}</div>
+                <div className="mt-[10px] text-[14px] bg-purple-200 text-purple-700 border-2 border-solid border-purple-300 p-[10px] rounded-xl duration-500 cursor-pointer hover:bg-purple-300 hover:text-purple-900 active:bg-purple-300 hover:text-purple-900">{response.match(/C\)\s*([\s\S]*?)(?=\s*D\)|$)/)}</div>
+                <div className="mt-[10px] text-[14px] bg-purple-200 text-purple-700 border-2 border-solid border-purple-300 p-[10px] rounded-xl duration-500 cursor-pointer hover:bg-purple-300 hover:text-purple-900 active:bg-purple-300 hover:text-purple-900">{response.match(/D\)\s*([\s\S]*?)(?=\s*\)|$)/)}</div>
+            </div>
         </div>
     )
 }
